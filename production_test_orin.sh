@@ -245,9 +245,9 @@ function test_menu {
 			27 )
 				echo "Accelerometer Test"
 				if [ -d "/sys/bus/i2c/devices/7-0068" ]; then
-					gnome-terminal -- watch -n 0.1 i2cget -y 7 0x68 0x75
+					gnome-terminal -- watch -n 0.1 cat /sys/bus/i2c/devices/7-0068/iio\:device0/in_*
 				else
-					echo "Temperature Sensor could not found"
+					echo "Accelerometer could not found"
 				fi
 				;;
 			[Qq]* )
