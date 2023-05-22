@@ -9,8 +9,8 @@ sudo modprobe can_raw
 sudo modprobe mttcan
 sudo ip link set can1 up type can bitrate 500000 dbitrate 2000000 berr-reporting on fd on
 
-trap disable_keye INT
-disable_keye() {
+trap interrupt_func INT
+interrupt_func() {
 	sudo ip link set can1 down
 }
 

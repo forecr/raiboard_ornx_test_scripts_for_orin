@@ -9,8 +9,8 @@ sudo modprobe can_raw
 sudo modprobe mttcan
 sudo ip link set can0 up type can bitrate 500000 sjw 127 dsjw 15
 
-trap disable_keye INT
-disable_keye() {
+trap interrupt_func INT
+interrupt_func() {
 	sudo ip link set can0 down
 }
 

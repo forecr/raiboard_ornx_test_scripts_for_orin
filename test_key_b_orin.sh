@@ -10,8 +10,8 @@ sudo echo high > /sys/class/gpio/PN.01/direction
 sudo echo low > /sys/class/gpio/PCC.03/direction
 #sudo echo high > /sys/class/gpio/PP.06/direction
 
-trap disable_keye INT
-disable_keye() {
+trap interrupt_func INT
+interrupt_func() {
 	sudo echo 454 > /sys/class/gpio/unexport
 	sudo echo 433 > /sys/class/gpio/unexport
 	sudo echo 328 > /sys/class/gpio/unexport

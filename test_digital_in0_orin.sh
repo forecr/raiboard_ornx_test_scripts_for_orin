@@ -7,8 +7,8 @@ fi
 sudo echo 399 > /sys/class/gpio/export
 sudo echo in > /sys/class/gpio/PI.00/direction
 
-trap disable_keye INT
-disable_keye() {
+trap interrupt_func INT
+interrupt_func() {
 	sudo echo 399 > /sys/class/gpio/unexport
 }
 
