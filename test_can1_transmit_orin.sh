@@ -12,6 +12,7 @@ sudo ip link set can1 up type can bitrate 500000 dbitrate 2000000 berr-reporting
 trap interrupt_func INT
 interrupt_func() {
 	sudo ip link set can1 down
+	read -p 'Press [Enter] to exit' quit_key
 }
 
 cangen can1 -v
