@@ -111,6 +111,7 @@ function test_menu {
 		echo "25) Digital In-3 Test"
 		echo "26) Temperature Sensor Test"
 		echo "27) Accelerometer Test"
+		echo "28) Fan Test"
 		read -p "Type the test number (or quit) [1/.../q]: " choice
 		echo ""
 
@@ -254,6 +255,10 @@ function test_menu {
 				else
 					echo "Accelerometer could not found"
 				fi
+				;;
+			28 )
+				echo "Fan Test"
+				sudo gnome-terminal -- $SCRIPTS_FOLDER/test_fan.sh
 				;;
 			[Qq]* )
 				echo "Quitting ..."
