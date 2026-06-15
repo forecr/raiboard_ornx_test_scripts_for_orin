@@ -56,6 +56,9 @@ function apt_install_pkg {
 # Check GtkTerm installed
 apt_install_pkg 'gtkterm'
 
+# Check lm-sensors installed
+apt_install_pkg 'lm-sensors'
+
 
 function check_nvgetty_service {
 	echo -n "nvgetty.service status: "
@@ -241,11 +244,7 @@ function test_menu {
 				;;
 			26 )
 				echo "Temperature Sensor Test"
-				if [ -d "/sys/bus/i2c/devices/0-0049" ]; then
-					gnome-terminal -- watch -n 0.1 cat /sys/bus/i2c/devices/0-0049/hwmon/hwmon*/temp1_input
-				else
-					echo "Temperature Sensor could not found"
-				fi
+				sudo gnome-terminal -- watch -n 0.1 sensors tmp102-*
 				;;
 			27 )
 				echo "Accelerometer Test"
