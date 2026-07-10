@@ -6,7 +6,7 @@ if [ "$(whoami)" != "root" ] ; then
 fi
 
 # Check the scipts' folder
-SCRIPTS_FOLDER=${PWD}
+SCRIPTS_FOLDER=$(dirname $(realpath $0))
 if [ $# -eq 1 ]; then
 	SCRIPTS_FOLDER=$1
 fi
@@ -248,11 +248,7 @@ function test_menu {
 				;;
 			27 )
 				echo "Accelerometer Test"
-				if [ -d "/sys/bus/i2c/devices/7-0068" ]; then
-					gnome-terminal -- watch -n 0.1 cat /sys/bus/i2c/devices/7-0068/iio\:device0/in_*
-				else
-					echo "Accelerometer could not found"
-				fi
+				sudo gnome-terminal -- $SCRIPTS_FOLDER/test_imu_orin.sh
 				;;
 			28 )
 				echo "Fan Test"
